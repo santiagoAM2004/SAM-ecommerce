@@ -13,6 +13,8 @@ menuEmail.addEventListener('click', toggleSubDesktopMenu);
 
 function toggleSubDesktopMenu() {
     subDesktopMenu.classList.toggle('inactive');
+    detailProducts.classList.add('inactive');
+
 }
 
 hamMenu.addEventListener('click', toggleSubMobileMenu);
