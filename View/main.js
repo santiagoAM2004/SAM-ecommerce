@@ -7,29 +7,57 @@ const subMenuMobile = document.querySelector('.mobile-menu');
 const detailProducts = document.querySelector('.product-detail');
 const shopingCarIcon = document.querySelector('.navbar-shopping-cart');
 
-const CardsContainer = document.querySelector('.cards-container')
+const CardsContainer = document.querySelector('.cards-container');
+
+const productCharacteristic = document.querySelector('.product-characteristic');
+const productCharactericticClose = document.querySelector('.product-characteristic-close');
+const productModal = document.querySelector('.container-products');
 
 menuEmail.addEventListener('click', toggleSubDesktopMenu);
+hamMenu.addEventListener('click', toggleSubMobileMenu);
+shopingCarIcon.addEventListener('click', toggleDetailProduct);
+productCharactericticClose.addEventListener('click', removeProductCharacteristic);
+
 
 function toggleSubDesktopMenu() {
     subDesktopMenu.classList.toggle('inactive');
     detailProducts.classList.add('inactive');
+    productCharacteristic.classList.add('inactive');
 
 }
 
-hamMenu.addEventListener('click', toggleSubMobileMenu);
 
 function toggleSubMobileMenu(){
     detailProducts.classList.add('inactive');
+    productCharacteristic.classList.add('inactive');
+    subDesktopMenu.classList.add('inactive');
     subMenuMobile.classList.toggle('inactive');
 }
 
-shopingCarIcon.addEventListener('click', toggleDetailProduct);
 
 function toggleDetailProduct(){
     subMenuMobile.classList.add('inactive');
+    productCharacteristic.classList.add('inactive');
+    subDesktopMenu.classList.add('inactive');
     detailProducts.classList.toggle('inactive');
 }
+
+function addProductCharacteristic(){
+    subMenuMobile.classList.add('inactive');
+    detailProducts.classList.add('inactive');
+    subDesktopMenu.classList.add('inactive');
+    productCharacteristic.classList.remove('inactive');
+    productModal.classList.add('overlay');
+}
+
+function removeProductCharacteristic(){
+    productCharacteristic.classList.add('inactive');
+    productModal.classList.remove('overlay');
+
+}
+
+
+
 
 const productsList = []
 productsList.push({
@@ -64,6 +92,7 @@ for (product of productsList){
 
     const imgCard = document.createElement('img');
     imgCard.setAttribute('src', product.image);
+    imgCard.addEventListener('click', addProductCharacteristic);
 
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
